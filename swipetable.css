@@ -1,0 +1,48 @@
+body {
+	font-family: "Helvetica Neue";
+	font-size: 16px;
+	background-color: #ccc;
+}
+
+.wrapper {
+	margin: 0 auto;
+	background-color: white;
+	padding: 0;
+}
+
+td, th {
+	padding: 10px;
+	outline-bottom: 1px solid #ccc;
+
+}
+.overview-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.overview-table th,
+.overview-table td {
+	text-align: left;
+	white-space: nowrap;
+	border-bottom: 1px solid #ddd;
+}
+
+
+.swipetable-wrapper {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.swipetable-inner {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.swipetable-persistant-column {
+	background-color: white;
+	border-right: 3px solid #ddd;
+}
+
+.swipetable .is-hidden {
+	visibility: hidden;
+}
