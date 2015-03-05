@@ -6,6 +6,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SwipeTable test</title>
 		<link rel="stylesheet" href="swipetable.css">
+		<style>
+			body {
+				font-family: "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+				font-size: 16px;
+				background-color: #ccc;
+			}
+
+			.wrapper {
+				margin: 0 auto;
+				background-color: white;
+				padding: 0;
+			}
+
+			td, th {
+				padding: 10px;
+				outline-bottom: 1px solid #ccc;
+
+			}
+		</style>
 	</head>
 	<body>
 
@@ -272,7 +291,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="jquery.swipetable.js"></script>
 		<script>
-			$('.swipetable').swipeTable();
+			$('.swipetable').swipeTable({
+				perisistentColumns: 2
+			});
 		</script>
 
 		</body>

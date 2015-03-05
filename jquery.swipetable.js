@@ -3,8 +3,9 @@
 	$.fn.swipeTable = function (method) {
 		// plugin's default options
 		var defaults = {
-			width:          '100%',
-			height:         '100%'
+			width: '100%',
+			height: '100%',
+			perisistentColumns: 2
 		};
 
 		var settings = {};
@@ -41,7 +42,11 @@
 			table.wrap(inner);
 			table.closest('.swipetable-inner').wrap(wrapper);
 
-			var fixedColumnWidth = table.find('thead th:first').outerWidth();
+			var fixedColumnWidth = 0;
+			table.find('thead th:lt(' + settings.perisistentColumns + ')').each(function() {
+				fixedColumnWidth += $(this).outerWidth();
+			});
+
 			table.find('th, td').each(function() {
 				var td = $(this);
 				td.height(td.height());
@@ -50,15 +55,19 @@
 
 			var fixedTable = table.clone();
 
-			table.find('thead th:first').addClass('is-hidden');
+			table.find('thead th:lt(' + settings.perisistentColumns + ')').addClass('is-hidden');
+
 			table.find('tbody tr').each(function() {
-				$(this).find('td:first-of-type').addClass('is-hidden');
+				$(this).find('td:lt(' + settings.perisistentColumns + ')').addClass('is-hidden');
 			});
 
 			// remove everyting but the first column of each row
-			fixedTable.find('thead th:not(:first)').remove();
+			var ths = fixedTable.find('thead th');
+			ths.not(ths.slice(0,settings.perisistentColumns)).remove();
+
 			fixedTable.find('tbody tr').each(function() {
-				$(this).find('td:not(:first)').remove();
+				var tds = $(this).find('td');
+				tds.not(tds.slice(0,settings.perisistentColumns)).remove();
 			});
 
 			fixedTable.find('td, th').addClass('swipetable-persistant-column')

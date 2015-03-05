@@ -1,20 +1,3 @@
-body {
-	font-family: "Helvetica Neue";
-	font-size: 16px;
-	background-color: #ccc;
-}
-
-.wrapper {
-	margin: 0 auto;
-	background-color: white;
-	padding: 0;
-}
-
-td, th {
-	padding: 10px;
-	outline-bottom: 1px solid #ccc;
-
-}
 .overview-table {
 	width: 100%;
 	border-collapse: collapse;
@@ -40,6 +23,8 @@ td, th {
 
 .swipetable-persistant-column {
 	background-color: white;
+}
+.swipetable-persistant-column:last-of-type {
 	border-right: 3px solid #ddd;
 }
 
