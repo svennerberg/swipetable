@@ -29,5 +29,6 @@
 }
 
 .swipetable .is-hidden {
-	visibility: hidden;
+	/*visibility: hidden;*/
+	color: transparent;
 }
