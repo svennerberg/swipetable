@@ -33,22 +33,26 @@
 		};
 
 		function initTable(table) {
-			console.log('initializing')
 
-			var fixedTable = table.clone(),
-				wrapper = $('<div class="swipetable-wrapper" />'),
+			var wrapper = $('<div class="swipetable-wrapper" />'),
 				inner = $('<div class="swipetable-inner" />');
 
 			table.addClass('is-initialized');
-			fixedTable.addClass('is-fixed is-initialized');
 			table.wrap(inner);
 			table.closest('.swipetable-inner').wrap(wrapper);
 
-			// Check width of first column
-			var fixedColumnWidth = table.find('thead th:first').width();
-			table.find('thead th:first').addClass('is-hidden').width(fixedColumnWidth)
+			var fixedColumnWidth = table.find('thead th:first').outerWidth();
+			table.find('th, td').each(function() {
+				var td = $(this);
+				td.height(td.height());
+				td.width(td.width());
+			});
+
+			var fixedTable = table.clone();
+
+			table.find('thead th:first').addClass('is-hidden');
 			table.find('tbody tr').each(function() {
-				$(this).find('td:first-of-type').addClass('is-hidden').width(fixedColumnWidth);
+				$(this).find('td:first-of-type').addClass('is-hidden');
 			});
 
 			// remove everyting but the first column of each row
@@ -59,6 +63,7 @@
 
 			fixedTable.find('td, th').addClass('swipetable-persistant-column')
 
+			fixedTable.addClass('is-fixed is-initialized');
 			fixedTable.css({
 				position: 'absolute',
 				top: 0,
@@ -67,14 +72,13 @@
 				width: fixedColumnWidth
 			});
 
-			console.log(fixedTable)
-
 			table.closest('.swipetable-wrapper').append(fixedTable);
 		}
 
 		function refreshTable() {
 
 		}
+
 
 		// if a method as the given argument exists
 		if (methods[method]) {
